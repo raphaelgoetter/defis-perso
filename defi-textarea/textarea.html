@@ -1,93 +1,38 @@
 <!DOCTYPE html>
 <html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Défi textarea</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        /* On ne commente pas mes styles ! */
-        body {
-            font-family: sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 1rem;
-            background-color: #181818;
-            color: #fff;
-            min-height: 100vh;
-            display: flex;
-            place-items: center;
-            justify-content: center;
-        }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-        .textarea-view {
-            flex-grow: 1;
-            @media screen and (min-width: 768px) {
-                max-width: 768px;
-            }
-        }
-
-        h1 {
-            font-weight: normal;
-        }
-
-        textarea {
-            width: 100%;
-            padding: 1rem;
-            font-size: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 0.25rem;
-            box-sizing: border-box;
-            resize: vertical;
-            color: white;
-            background-color: rgba(0, 0, 0, 0.05);
-        }
-
-        button {
-            padding: 0.75rem 1.5rem;
-            font-size: 1rem;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 0.25rem;
-            cursor: pointer;
-        }
-
-        .container {
-            position: relative;
-            margin-top: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Le compteur de caractères */
-        .counter {
-            position: absolute;
-            right: 1rem;
-            bottom: 1rem;
-            color: #ccc;
-        }
-    </style>
-</head>
-
-<body>
+  <body>
     <div class="textarea-view">
-        <h1>Contactez-nous</h1>
-        <label for="textarea">Votre message</label>
-        <div class="container">
-            <textarea autofocus name="message" id="textarea" cols="30" rows="10"></textarea>
-            <span class="counter">
-                0
-                /
-                250
-            </span>
-        </div>
-        <p>
-            <button>Envoyer</button>
-        </p>
+      <h1>Contactez-nous</h1>
+      <label for="textarea">Votre message</label>
+      <div class="container">
+        <textarea
+          autofocus
+          name="message"
+          id="textarea"
+          cols="30"
+          rows="10"
+          maxlength="250"
+          aria-describedby="counter"
+        ></textarea>
+        <span class="counter" id="counter" role="status" aria-live="polite">
+          <span class="count"></span>
+          <span class="visually-hidden"> caractères</span>
+          <span class="limit-alert visually-hidden"></span>
+        </span>
+      </div>
+      <p>
+        <button>Envoyer</button>
+      </p>
     </div>
 
-    <script>
-        // ... À vous de jouer !
-    </script>
-
+    <script src="script.js"></script>
+    <!-- On ferme la balise body parce qu'il faut pas déconner -->
+  </body>
 </html>
