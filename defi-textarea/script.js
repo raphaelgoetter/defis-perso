@@ -1,20 +1,22 @@
-// Configuration du compteur
-// La limitation de caractères est gérée nativement par l'attribut maxlength du textarea
-
-const config = {
-  maxLength: 250,
-  // Le seuil d'avertissement est calculé à 90% de la longueur maximale
-  get warningThreshold() {
-    return Math.floor(this.maxLength * 0.9);
-  },
-};
-
 // Sélection des éléments du DOM
 const elements = {
   textarea: document.getElementById("textarea"),
   counter: document.getElementById("counter"),
   count: document.querySelector(".counter .count"),
   limitAlert: document.querySelector(".counter .limit-alert"),
+};
+
+// Configuration du compteur
+// La limitation de caractères est gérée nativement par l'attribut maxlength du textarea
+const config = {
+  // Récupération de la valeur maxlength du textarea
+  get maxLength() {
+    return parseInt(elements.textarea.getAttribute("maxlength"), 10);
+  },
+  // Le seuil d'avertissement est calculé à 90% de la longueur maximale
+  get warningThreshold() {
+    return Math.floor(this.maxLength * 0.9);
+  },
 };
 
 /**
