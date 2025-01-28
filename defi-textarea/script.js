@@ -29,23 +29,26 @@ const updateCounter = (count) => {
 
   // Gestion du message d'alerte de limite
   elements.limitAlert.textContent =
-    count >= config.maxLength ? " (limite atteinte)" : "";
+    count >= config.maxLength ? "(limite atteinte)" : "";
+  elements.limitAlert.classList.toggle(
+    "visually-hidden",
+    count < config.maxLength
+  );
 
-  // Gestion des états visuels et des attributs ARIA
+  // Gestion des états visuels
   if (count >= config.maxLength) {
+    elements.textarea.classList.remove("is-warning");
+    elements.counter.classList.remove("is-warning");
     elements.textarea.classList.add("is-error");
     elements.counter.classList.add("is-error");
-    elements.textarea.setAttribute("aria-invalid", "true");
   } else if (count >= config.warningThreshold) {
     elements.textarea.classList.remove("is-error");
     elements.counter.classList.remove("is-error");
     elements.textarea.classList.add("is-warning");
     elements.counter.classList.add("is-warning");
-    elements.textarea.removeAttribute("aria-invalid");
   } else {
     elements.textarea.classList.remove("is-error", "is-warning");
     elements.counter.classList.remove("is-error", "is-warning");
-    elements.textarea.removeAttribute("aria-invalid");
   }
 };
 
